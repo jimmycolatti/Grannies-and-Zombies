@@ -3,6 +3,7 @@ body {
 }
 
 #canvas1 {
+  background-image: './sprites/Background.png';
   background: white;
   position: absolute;
   top: 50%;
