@@ -254,11 +254,18 @@ class Enemy {
     this.spriteWidth = 972;
     this.spriteHeight = 818;
   }
+
   update() {
     this.x -= this.movement;
-    if (frame % 20 === 0) {
-      if (this.frameX < this.maxFrame) this.frameX++;
-      else this.frameX = this.minFrame;
+    if (frame % 10 === 0) {
+      // if (this.frameX < this.maxFrame) this.frameX++;
+      // // else this.frameX = this.minFrame;
+
+      if (this.frameX < this.maxFrame) {
+        this.frameX++;
+      }
+
+      console.log(this.frameX, this.frameY);
     }
   }
   draw() {
