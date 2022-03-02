@@ -13,8 +13,47 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <span> </span>
+    <span>
+      <img src="./images/MuteOn.png" alt="Mute On" class="muteBtn" />
+    </span>
+    <div class="midSection">
+      <img src="/images/logo.png" alt="Grannies vs Zombies" class="logotext" />
+      <div class="menu">
+        <button
+          class="instructionsBtn"
+          onclick="window.location.href = './instructions.html'"
+        >
+          Instructions
+        </button>
+        <button class="startBtn" onclick="window.location.href = './game.html'">
+          Play Now!
+        </button>
+      </div>
+    </div>
 
-    <script src="./index.js"></script>
+    <script>
+      // mute button
+      let mute = true;
+      localStorage.setItem('mute', mute);
+      const muteBtn = document.querySelector('.muteBtn');
+      // Intro song
+      let introSong = new Audio();
+      introSong.src = '/audio/IntroTheme.mp3';
+
+      muteBtn.addEventListener('click', function () {
+        mute = !mute;
+        console.log(mute);
+        localStorage.setItem('mute', mute);
+        if (!mute) {
+          muteBtn.src = '/images/MuteOff.png';
+          introSong.play();
+          introSong.loop = true;
+        } else {
+          muteBtn.src = '/images/MuteOn.png';
+          introSong.pause();
+          introSong.loop = false;
+        }
+      });
+    </script>
   </body>
 </html>
