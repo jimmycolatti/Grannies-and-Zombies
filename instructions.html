@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grannies vs Zombies</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./instructions.css" />
+  </head>
+  <body>
+    <div class="leftside">
+      <button class="backbutton" onclick="window.location.href = '/index.html'">
+        Return Home
+      </button>
+      <div class="outerInstructions">
+        <div class="instructions">
+          <h1>Instructions</h1>
+          <p>
+            Zombies have taken over our town and they're heading towards our
+            small 55+ community! You need to protect our neighborhood from being
+            overtaken.
+          </p>
+          <p>
+            Don't let the zombies hit you, they hurt! Shoot them down before
+            they get past you and into your neighborhood.
+          </p>
+          <p>
+            Use your mouse to choose your Granny up at the top then plant that
+            Granny down in a cell to defend her ground. When she sees a zombie
+            in front of her, she'll shoot!
+          </p>
+          <p>
+            Use your mouse to hover over the purses that will appear on the map
+            to collect more resources and purchase more Granny defenders.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="rightside">
+      <img
+        src="/images/oldie-zombie.png"
+        alt="Old-Zombie"
+        class="zombiePhoto"
+      />
+    </div>
+  </body>
+  <script>
+    let mute = localStorage.getItem('mute');
+
+    let instructionSong = new Audio();
+    instructionSong.src = '/audio/Instructions.mp3';
+    instructionSong.loop = true;
+    if (mute == 'true') {
+      instructionSong.pause();
+    } else {
+      instructionSong.play();
+    }
+  </script>
+</html>

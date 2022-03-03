@@ -21,14 +21,42 @@ body {
 }
 
 #canvas1 {
-  background: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 900px;
   height: 600px;
   border: 3px solid rgba(229, 5, 255, 1);
   border-radius: 2rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+}
+
+.leftSection {
+  margin-right: 100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+button {
+  border: 3px solid rgba(229, 5, 255, 1);
+  background-color: rgba(255, 255, 255, 0.192);
+  border-radius: 0.5rem;
+  color: white;
+  width: 200px;
+  height: 70px;
+  font-size: 20px;
+  text-shadow: 2px 2px black;
+}
+
+button:hover {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.509);
+}
+
+button:focus {
+  outline: 0;
+}
+
+.backbutton {
+  align-self: flex-start;
+  justify-self: flex-start;
 }

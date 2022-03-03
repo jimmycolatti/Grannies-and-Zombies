@@ -31,6 +31,7 @@ const mouse = {
 };
 canvas.addEventListener('mousedown', function () {
   mouse.clicked = true;
+  tapSound.play();
 });
 canvas.addEventListener('mouseup', function () {
   mouse.clicked = false;
@@ -95,6 +96,53 @@ function handleGameGrid() {
     gameGrid[i].draw();
   }
 }
+
+// audio
+let mute = localStorage.getItem('mute');
+
+let gameMusic = new Audio();
+gameMusic.src = '/audio/gameMusic.mp3';
+gameMusic.volume = 0.5;
+gameMusic.loop = true;
+document.onload = gameMusic.play();
+
+let gameOverSound = new Audio();
+gameOverSound.src = '/audio/gameOver.mp3';
+
+let winnerSound = new Audio();
+winnerSound.src = '/audio/Winner.mp3';
+
+let resourcesSound = new Audio();
+resourcesSound.src = '/audio/resources.mp3';
+resourcesSound.volume = 0.5;
+
+let zombieDeathSound = new Audio();
+zombieDeathSound.src = '/audio/zombie-death.mp3';
+zombieDeathSound.volume = 0.3;
+
+let shotgunSound = new Audio();
+shotgunSound.src = '/audio/shotgun_sound.mp3';
+shotgunSound.volume = 0.1;
+
+let tapSound = new Audio();
+tapSound.src = '/audio/tap.mp3';
+tapSound.volume = 1;
+
+let zombieGroan = new Audio();
+zombieGroan.src = '/audio/zombie-groan.mp3';
+zombieGroan.volume = 0.5;
+
+if (mute == 'true') {
+  gameMusic.src = '';
+  gameOverSound.src = '';
+  winnerSound.src = '';
+  resourcesSound.src = '';
+  zombieDeathSound.src = '';
+  shotgunSound.src = '';
+  tapSound.src = '';
+  zombieGroan.src = '';
+}
+
 // projectiles
 
 class Projectile {
@@ -215,6 +263,7 @@ class Defender {
     }
 
     if (this.shooting && this.shootNow) {
+      shotgunSound.play();
       projectiles.push(new Projectile(this.x + 70, this.y + 50));
       this.shootNow = false;
     }
@@ -225,6 +274,7 @@ function handleDefenders() {
   for (let i = 0; i < defenders.length; i++) {
     defenders[i].draw();
     defenders[i].update();
+
     if (enemyPositions.indexOf(defenders[i].y) !== -1) {
       defenders[i].shooting = true;
     } else {
@@ -414,6 +464,7 @@ function handleEnemies() {
       gameOver = true;
     }
     if (enemies[i].health <= 0) {
+      zombieDeathSound.play();
       let gainedResources = enemies[i].maxHealth / 10;
       floatingMessages.push(
         new FloatingMessage(
@@ -436,11 +487,12 @@ function handleEnemies() {
     }
   }
   if (frame % enemiesInterval === 0 && score < winningScore) {
+    zombieGroan.play();
     let verticalPosition =
       Math.floor(Math.random() * 5 + 1) * cellSize + cellGap;
     enemies.push(new Enemy(verticalPosition));
     enemyPositions.push(verticalPosition);
-    if (enemiesInterval > 120) enemiesInterval -= 50; // game difficulty
+    if (enemiesInterval > 300) enemiesInterval -= 50; // game difficulty
   }
 }
 
@@ -502,6 +554,7 @@ function handleResources() {
     resources[i].draw();
     if (resources[i] && mouse.x && mouse.y && collision(resources[i], mouse)) {
       numberOfResources += resources[i].amount;
+      resourcesSound.play();
       floatingMessages.push(
         new FloatingMessage(
           '+' + resources[i].amount,
@@ -527,11 +580,15 @@ function handleGameStatus() {
   ctx.fillText('Score: ' + score, 180, 40);
   ctx.fillText('Resources: ' + numberOfResources, 180, 80);
   if (gameOver) {
+    gameMusic.pause();
+    gameOverSound.play();
     ctx.fillStyle = 'black';
     ctx.font = '90px Orbitron';
     ctx.fillText('GAME OVER', 135, 330);
   }
   if (score >= winningScore && enemies.length === 0) {
+    gameMusic.pause();
+    winnerSound.play();
     ctx.fillStyle = 'black';
     ctx.font = '60px Orbitron';
     ctx.fillText('LEVEL COMPLETE', 130, 300);
