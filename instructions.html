@@ -43,7 +43,7 @@
     </div>
     <div class="rightside">
       <img
-        src="/images/oldie-zombie.png"
+        src="./images/oldie-zombie.png"
         alt="Old-Zombie"
         class="zombiePhoto"
       />
@@ -53,7 +53,7 @@
     let mute = localStorage.getItem('mute');
 
     let instructionSong = new Audio();
-    instructionSong.src = '/audio/Instructions.mp3';
+    instructionSong.src = './audio/Instructions.mp3';
     instructionSong.loop = true;
     if (mute == 'true') {
       instructionSong.pause();

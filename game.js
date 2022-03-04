@@ -50,9 +50,9 @@ canvas.addEventListener('mouseleave', function () {
 
 // background
 const background = new Image();
-background.src = '/sprites/background1.png';
+background.src = './sprites/background1.png';
 const grass = new Image();
-grass.src = '/sprites/grass.png';
+grass.src = './sprites/grass.png';
 
 const BG = {
   x: 0,
@@ -101,35 +101,35 @@ function handleGameGrid() {
 let mute = localStorage.getItem('mute');
 
 let gameMusic = new Audio();
-gameMusic.src = '/audio/gameMusic.mp3';
+gameMusic.src = './audio/gameMusic.mp3';
 gameMusic.volume = 0.5;
 gameMusic.loop = true;
 document.onload = gameMusic.play();
 
 let gameOverSound = new Audio();
-gameOverSound.src = '/audio/gameOver.mp3';
+gameOverSound.src = './audio/gameOver.mp3';
 
 let winnerSound = new Audio();
-winnerSound.src = '/audio/Winner.mp3';
+winnerSound.src = './audio/Winner.mp3';
 
 let resourcesSound = new Audio();
-resourcesSound.src = '/audio/resources.mp3';
+resourcesSound.src = './audio/resources.mp3';
 resourcesSound.volume = 0.5;
 
 let zombieDeathSound = new Audio();
-zombieDeathSound.src = '/audio/zombie-death.mp3';
+zombieDeathSound.src = './audio/zombie-death.mp3';
 zombieDeathSound.volume = 0.3;
 
 let shotgunSound = new Audio();
-shotgunSound.src = '/audio/shotgun_sound.mp3';
+shotgunSound.src = './audio/shotgun_sound.mp3';
 shotgunSound.volume = 0.1;
 
 let tapSound = new Audio();
-tapSound.src = '/audio/tap.mp3';
+tapSound.src = './audio/tap.mp3';
 tapSound.volume = 1;
 
 let zombieGroan = new Audio();
-zombieGroan.src = '/audio/zombie-groan.mp3';
+zombieGroan.src = './audio/zombie-groan.mp3';
 zombieGroan.volume = 0.5;
 
 if (mute == 'true') {

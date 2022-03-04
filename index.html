@@ -17,7 +17,7 @@
       <img src="./images/MuteOn.png" alt="Mute On" class="muteBtn" />
     </span>
     <div class="midSection">
-      <img src="/images/logo.png" alt="Grannies vs Zombies" class="logotext" />
+      <img src="./images/logo.png" alt="Grannies vs Zombies" class="logotext" />
       <div class="menu">
         <button
           class="instructionsBtn"
@@ -38,18 +38,18 @@
       const muteBtn = document.querySelector('.muteBtn');
       // Intro song
       let introSong = new Audio();
-      introSong.src = '/audio/IntroTheme.mp3';
+      introSong.src = './audio/IntroTheme.mp3';
 
       muteBtn.addEventListener('click', function () {
         mute = !mute;
         console.log(mute);
         localStorage.setItem('mute', mute);
         if (!mute) {
-          muteBtn.src = '/images/MuteOff.png';
+          muteBtn.src = './images/MuteOff.png';
           introSong.play();
           introSong.loop = true;
         } else {
-          muteBtn.src = '/images/MuteOn.png';
+          muteBtn.src = './images/MuteOn.png';
           introSong.pause();
           introSong.loop = false;
         }
