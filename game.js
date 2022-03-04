@@ -11,7 +11,7 @@ let enemiesInterval = 800;
 let frame = 0;
 let gameOver = false;
 let score = 0;
-const winningScore = 100;
+const winningScore = 50;
 let chosenDefender = 1;
 
 const gameGrid = [];
