@@ -11,7 +11,7 @@ let enemiesInterval = 800;
 let frame = 0;
 let gameOver = false;
 let score = 0;
-const winningScore = 200;
+const winningScore = 100;
 let chosenDefender = 1;
 
 const gameGrid = [];
@@ -111,6 +111,7 @@ gameOverSound.src = './audio/gameOver.mp3';
 
 let winnerSound = new Audio();
 winnerSound.src = './audio/Winner.mp3';
+winnerSound.loop = false;
 
 let resourcesSound = new Audio();
 resourcesSound.src = './audio/resources.mp3';
